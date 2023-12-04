@@ -1,0 +1,24 @@
+
+#Dict+MaxHeap
+
+public class Solution {
+    public int[] TopKFrequent(int[] nums, int k) {
+        var d = new Dictionary<int, int>();
+        foreach (int num in nums) {
+            if (d.ContainsKey(num)) {
+                d[num]++;
+            } else {
+                d[num] = 1;
+            }
+        }
+        var pq = new PriorityQueue<int, int>();
+        foreach(var i in d.Keys){
+            pq.Enqueue(i, -d[i]);
+        }
+        var ans = new int[k];
+        for(int i = 0; i < k; i++){
+            ans[i] = pq.Dequeue();
+        }
+        return ans;
+    }
+}
