@@ -1,0 +1,32 @@
+public class Solution {
+    public IList<int> SpiralOrder(int[][] mat) {
+        var ans = new List<int>();
+        int m = mat.Length, n = mat[0].Length, l = 0, r = n - 1, t = 0, b = m - 1;
+        if(mat.Length == 0){
+            return ans;
+        }
+        while(l <= r && t <= b){
+            for(int i = l; i <= r; i++){
+                ans.Add(mat[t][i]);
+            }
+            t++;
+            for(int i = t; i <= b; i++){
+                ans.Add(mat[i][r]);
+            }
+            r--;
+            if(t <= b){
+                for(int i = r; i >= l; i--){
+                    ans.Add(mat[b][i]);
+                }
+                b--;
+            }
+            if(l <= r){
+                for(int i = b; i >= t; i--){
+                    ans.Add(mat[i][l]);
+                }
+                l++;
+            }
+        }
+        return ans;
+    }
+}
