@@ -1,0 +1,14 @@
+public class Solution {
+    public bool IsPalindrome(int x) {
+        var s = x.ToString();
+        int i = 0, n = s.Length, j = n - 1;
+        while(i <= j){
+            if(s[i] != s[j]){
+                return false;
+            }else{
+                i++; j--;
+            }
+        }
+        return true;
+    }
+}
