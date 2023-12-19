@@ -1,0 +1,30 @@
+public class Solution {
+    public string[] FindRelativeRanks(int[] score) {
+        var pq = new PriorityQueue<int, int>();
+        foreach(int i in score){
+            pq.Enqueue(i, -i);
+        }
+        var ans = new string[score.Length];
+        var d = new Dictionary<int, string>();
+        int pl = 1;
+        while(pq.Count > 0){
+            if(pl == 1){
+                d[pq.Dequeue()] = "Gold Medal";
+                pl++;
+            }else if(pl == 2){
+                d[pq.Dequeue()] = "Silver Medal";
+                pl++;
+            }else if(pl == 3){
+                d[pq.Dequeue()] = "Bronze Medal";
+                pl++;
+            }else{
+                d[pq.Dequeue()] = Convert.ToString(pl);
+                pl++;
+            }
+        }
+        for(int i = 0; i < score.Length; i++){
+            ans[i] = d[score[i]];
+        }
+        return ans;
+    }
+}
