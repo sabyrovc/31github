@@ -1,0 +1,22 @@
+public class Solution {
+    public void Rotate(int[][] matrix) {
+        var a = new int[matrix.Length][];
+        for(int i= 0; i < matrix.Length; i++){
+            a[i] = new int[matrix.Length];
+        }
+        for(int i = 0; i < a.Length; i++){
+            for(int j = 0; j < a[i].Length; j++){
+                a[i][j] = matrix[matrix.Length - 1 - i][j];
+            }
+        }
+        for(int i = 0; i < a.Length; i++){
+            for(int j = 0; j < a[i].Length; j++){
+                if(i == j){
+                    matrix[i][j] = a[i][j];
+                }else{
+                    matrix[i][j] = a[j][i];
+                }
+            }
+        }
+    }
+}
