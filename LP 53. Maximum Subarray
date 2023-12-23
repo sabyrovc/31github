@@ -1,0 +1,17 @@
+public class Solution {
+    public int MaxSubArray(int[] nums) {
+        List<int> sum = new List<int>();
+        int[] pref = new int[nums.Length + 1];
+        pref[0] = 0;
+        for(int i = 0; i < nums.Length; i++){
+            pref[i + 1] = pref[i] + nums[i];
+        }
+        int min = 0;
+        for(int i = 1; i <= nums.Length; i++){
+            min = Math.Min(min, pref[i - 1]);
+           sum.Add(pref[i] - min);
+        }
+        int[] ans = sum.ToArray();
+        return ans.Max();
+    }
+}
