@@ -1,0 +1,15 @@
+public class Solution {
+    public int DistMoney(int m, int ch) {
+        m -= ch;
+        if(m < 0){
+            return -1;
+        }
+        if(m / 7 == ch && m % 7 == 0){
+            return ch;
+        }
+        if(m / 7 == ch - 1 && m % 7 == 3){
+            return ch - 2;
+        }
+        return Math.Min(ch - 1, m / 7);
+    }
+}
