@@ -1,0 +1,13 @@
+public class Solution {
+    public bool CheckIfExist(int[] arr) {
+        var d = new Dictionary<int, int>();
+        foreach(int i in arr){
+            if(d.ContainsKey(i * 2) || ( i % 2 == 0 && d.ContainsKey(i / 2))){
+                return true;
+            }else{
+                d[i] = 1;
+            }
+        }
+        return false;
+    }
+}
